@@ -1,16 +1,68 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="wrapper">
+    <notifications></notifications>
+    <side-bar
+      title="Drawer"
+      logo="https://cdn.vox-cdn.com/thumbor/0n6dqQfk9MuOBSiM39Pog2Bw39Y=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19341372/microsoftedgenewlogo.jpg"
+      backgroundColor="orange"
+    >
+      <template slot="links">
+        <sidebar-item
+          :link="{name: 'StockTraders', icon: 'fas fa-home text-primary', path:'/stocktraders'}"
+        ></sidebar-item>
+        <sidebar-item :link="{name: 'Stocks', icon: 'ni ni-app text-red', path:'/stocks'}"></sidebar-item>
+        <sidebar-item
+          :link="{name: 'Portfolio', icon: 'ni ni-air-baloon text-success', path:'/portfolio'}"
+        ></sidebar-item>
+      </template>
+    </side-bar>
+
+    <div class="main-content">
+      <!-- <DashboardNavbar :type="$route.name === 'alternative' ? 'light': 'default'"></DashboardNavbar> -->
+
+      <!--  <MyNavBar></MyNavBar> -->
+
+      <StockNav></StockNav>
+
+      <router-view></router-view>
+
+      <!--   <ContentFooter></ContentFooter> -->
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+import DashboardNavbar from "@/components/layouts/argon/DashboardNavbar.vue";
+import ContentFooter from "@/components/layouts/argon/ContentFooter.vue";
+import MyNavBar from "@/views/MyNavBar.vue";
+import StockNav from "@/views/StockNav.vue";
+@Component({
+  components: {
+    DashboardNavbar,
+    ContentFooter,
+    MyNavBar,
+    StockNav
+  }
+})
+export default class App extends Vue {
+  created() {
+    console.log("created");
+
+    this.$store.commit("setCash", 10);
+
+    this.$notify({
+      verticalAlign: "bottom",
+      horizontalAlign: "right",
+      message: "Welcome Back!"
+    });
+  }
+}
+</script>
+
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

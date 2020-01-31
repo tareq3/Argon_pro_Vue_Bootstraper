@@ -1,29 +1,46 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import TaskList from "@/components/pages/dashboard/TaskList.vue";
+import ActivityFeed from "@/components/pages/dashboard/ActivityFeed.vue";
+import Stocks from "@/views/Stocks.vue";
+import StockTrader from "@/views/StockTraders.vue";
+import Portfolio from "@/views/Portfolio.vue";
+Vue.use(VueRouter);
 
-Vue.use(VueRouter)
-
-const routes = [
+const routes: any = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: "/",
+    redirect: "/stocktraders"
+  },
+
+  {
+    path: "/dashboard",
+    component: TaskList
+  },
+
+  {
+    path: "/alternative",
+    component: ActivityFeed
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: "/stocks",
+    component: Stocks
+  },
+  {
+    path: "/stocktraders",
+    component: StockTrader
+  },
+  {
+    path: "/portfolio",
+    component: Portfolio
   }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;

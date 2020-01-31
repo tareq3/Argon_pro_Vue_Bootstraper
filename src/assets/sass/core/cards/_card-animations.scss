@@ -1,0 +1,20 @@
+//
+// Card with hover animations
+//
+
+.card-lift--hover {
+  &:hover {
+    transform: translateY(-20px);
+    @include transition($transition-base);
+  }
+}
+
+.card-fly--hover {
+  &:hover {
+    transform: translate(5px, -5px);
+    color: rgba($color: #172b4d, $alpha: 1);
+    font-weight: bolder;
+    background-color: rgba($color: #e9f2f9, $alpha: 1);
+    @include transition($transition-base);
+  }
+}
