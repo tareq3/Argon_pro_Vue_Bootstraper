@@ -8,14 +8,20 @@ const state = {
 };
 
 const mutations = {
-  setCash: (state, cash) => (state.cash = cash)
+  SET_CASH: (state, cash) => (state.cash = cash),
+  ADD_CASH: (state, cash) => (state.cash += cash),
+  REDUCE_CASH: (state, cash) => (state.cash -= cash)
 };
 
 const getters = {
   getCash: state => state.cash
 };
 
-const actions = {};
+const actions = {
+  initCash: ({ commit }, price) => {
+    commit("SET_CASH", price);
+  }
+};
 
 export default {
   state,

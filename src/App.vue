@@ -47,9 +47,8 @@ import StockNav from "@/views/StockNav.vue";
 })
 export default class App extends Vue {
   created() {
-    console.log("created");
-
-    this.$store.commit("setCash", 10);
+    this.$store.dispatch("initCash", 1000);
+    this.$store.dispatch("initStock");
 
     this.$notify({
       verticalAlign: "bottom",

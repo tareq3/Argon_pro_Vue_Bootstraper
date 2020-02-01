@@ -6,8 +6,8 @@
     >
       <div slot="header">
         <h4 class="m-1">
-          {{header}}
-          <small>(price: {{price}})</small>
+          {{stock.name}}
+          <small>(price: {{stock.price}})</small>
         </h4>
       </div>
 
@@ -35,6 +35,7 @@
 import { Vue, Component, Prop, PropSync } from "vue-property-decorator";
 import BaseInput from "@/components/argon-core/Inputs/BaseInput.vue";
 import BaseButton from "@/components/argon-core/BaseButton.vue";
+import Stock from "@/store/models/Stock";
 @Component({
   name: "StockCard",
   components: {
@@ -43,17 +44,20 @@ import BaseButton from "@/components/argon-core/BaseButton.vue";
   }
 })
 export default class StockCard extends Vue {
-  @Prop() header!: String;
+  @PropSync("stock") syncedStock!: Stock;
   qty: number = null;
 
   isValid: boolean = true;
 
-  @PropSync("price") syncedPrice!: number;
-
   buy() {
     if (this.qty > 0) {
       this.isValid = true;
-      this.$emit("buy-callback", this.qty);
+      this.$emit("buy-callback", {
+        id: this.syncedStock.id,
+        name: this.syncedStock.name,
+        price: this.syncedStock.price,
+        qty: parseInt("" + this.qty)
+      });
 
       this.qty = null;
     } else {

@@ -34,7 +34,7 @@
 
       <li class="na-item text-secondary btn p-0" @click="onFunds">
         Funds:
-        <strong class="text-success">{{totalCash}}</strong>
+        <strong class="text-success">{{cash | currency}}</strong>
       </li>
     </ul>
   </base-nav>
@@ -55,8 +55,14 @@ import BaseDropDown from "@/components/argon-core/BaseDropdown.vue";
 })
 export default class StockNav extends Vue {
   totalCash: number = 0;
+
+  get cash() {
+    return (this.totalCash = this.$store.getters.getCash);
+  }
+
   onEndDay() {
     console.log("end day");
+    this.$store.dispatch("randomizeStock");
   }
   onFunds() {
     console.log("Funds");
