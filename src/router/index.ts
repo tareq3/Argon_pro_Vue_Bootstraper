@@ -14,6 +14,7 @@ const routes: any = [
 
   {
     path: "/home",
+
     component: Home
   },
 

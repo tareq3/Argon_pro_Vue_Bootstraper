@@ -22,8 +22,6 @@
 
       <!--  <MyNavBar></MyNavBar> -->
 
-     
-
       <router-view></router-view>
 
       <!--   <ContentFooter></ContentFooter> -->
@@ -41,14 +39,12 @@ import MyNavBar from "@/views/MyNavBar.vue";
   components: {
     DashboardNavbar,
     ContentFooter,
-    MyNavBar,
-  
+    MyNavBar
   }
 })
 export default class App extends Vue {
   created() {
-    this.$store.dispatch("initCash", 1000);
-    this.$store.dispatch("initStock");
+   
 
     this.$notify({
       verticalAlign: "bottom",
