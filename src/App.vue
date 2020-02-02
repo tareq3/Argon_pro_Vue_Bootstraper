@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <notifications></notifications>
-    <side-bar
+    <!-- <side-bar
       title="Drawer"
       logo="https://cdn.vox-cdn.com/thumbor/0n6dqQfk9MuOBSiM39Pog2Bw39Y=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19341372/microsoftedgenewlogo.jpg"
       backgroundColor="orange"
@@ -15,14 +15,14 @@
           :link="{name: 'Portfolio', icon: 'ni ni-air-baloon text-success', path:'/portfolio'}"
         ></sidebar-item>
       </template>
-    </side-bar>
+    </side-bar> -->
 
     <div class="main-content">
       <!-- <DashboardNavbar :type="$route.name === 'alternative' ? 'light': 'default'"></DashboardNavbar> -->
 
       <!--  <MyNavBar></MyNavBar> -->
 
-      <StockNav></StockNav>
+     
 
       <router-view></router-view>
 
@@ -36,13 +36,13 @@ import { Vue, Component } from "vue-property-decorator";
 import DashboardNavbar from "@/components/layouts/argon/DashboardNavbar.vue";
 import ContentFooter from "@/components/layouts/argon/ContentFooter.vue";
 import MyNavBar from "@/views/MyNavBar.vue";
-import StockNav from "@/views/StockNav.vue";
+
 @Component({
   components: {
     DashboardNavbar,
     ContentFooter,
     MyNavBar,
-    StockNav
+  
   }
 })
 export default class App extends Vue {

@@ -3,15 +3,18 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import TaskList from "@/components/pages/dashboard/TaskList.vue";
 import ActivityFeed from "@/components/pages/dashboard/ActivityFeed.vue";
-import Stocks from "@/views/stocks/Stocks.vue";
-import StockTrader from "@/views/StockTraders.vue";
-import Portfolio from "@/views/portfolio/Portfolio.vue";
+
 Vue.use(VueRouter);
 
 const routes: any = [
   {
     path: "/",
-    redirect: "/stocktraders"
+    redirect: "/home"
+  },
+
+  {
+    path: "/home",
+    component: Home
   },
 
   {
@@ -22,18 +25,6 @@ const routes: any = [
   {
     path: "/alternative",
     component: ActivityFeed
-  },
-  {
-    path: "/stocks",
-    component: Stocks
-  },
-  {
-    path: "/stocktraders",
-    component: StockTrader
-  },
-  {
-    path: "/portfolio",
-    component: Portfolio
   }
 ];
 
