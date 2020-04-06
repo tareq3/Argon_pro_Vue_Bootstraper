@@ -47,8 +47,7 @@ export default class App extends Vue {
    
 
     this.$notify({
-      verticalAlign: "bottom",
-      horizontalAlign: "right",
+      title: "Hello",
       message: "Welcome Back!"
     });
   }
