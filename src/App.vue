@@ -51,8 +51,7 @@ export default class App extends Vue {
     this.$store.dispatch("initStock");
 
     this.$notify({
-      verticalAlign: "bottom",
-      horizontalAlign: "right",
+      title: 'Some Title',
       message: "Welcome Back!"
     });
   }
